@@ -3,7 +3,6 @@ const inboxCampPingButlerBotToken =
   "bot6306154325:AAGealnx-L-5dWA-qCFurzBKWaC5lrr8b84";
 const inboxCampChannelID = -1001938140935;
 schedule.scheduleJob("0/1 * * * *", function (fireDate) {
-  console.log("pinging inboxcamp.com");
   const start = Date.now();
   fetch("https://inboxcamp.com").then(function (pingRes) {
     const report = {
@@ -20,12 +19,6 @@ schedule.scheduleJob("0/1 * * * *", function (fireDate) {
         },
         body: JSON.stringify(report),
       }
-    )
-      .then(function (reportRes) {
-        return reportRes.json();
-      })
-      .then(function (json) {
-        console.log(json);
-      });
+    );
   });
 });
